@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/seat/seat_page.dart';
 import 'package:flutter_train_app/pages/station_list/station_list_page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const StationListPage(),
+      home: const SeatPage(),
     );
   }
 }

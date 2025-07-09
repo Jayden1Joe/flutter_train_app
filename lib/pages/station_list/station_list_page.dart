@@ -30,27 +30,33 @@ class _StationListPageState extends State<StationListPage> {
         leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: SizedBox(
-                height: 50,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    '수서',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+        children: [for (String station in stations) seatList(station)],
+      ),
+    );
+  }
+
+  Column seatList(String text) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GestureDetector(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: SizedBox(
+              height: 50,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  text,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
           ),
-          Divider(),
-        ],
-      ),
+        ),
+        Divider(),
+      ],
     );
   }
 }

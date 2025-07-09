@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/home/home_page.dart';
+import 'package:flutter_train_app/pages/station_list/station_list_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,19 +19,5 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomePage(),
     );
-  }
-}
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

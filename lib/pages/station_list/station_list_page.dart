@@ -55,7 +55,7 @@ class _StationListPageState extends State<StationListPage> {
             ),
           ),
         ),
-        Divider(),
+        Divider(color: Colors.grey[300]),
       ],
     );
   }

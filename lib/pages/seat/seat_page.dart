@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SeatPage extends StatefulWidget {
@@ -108,7 +109,36 @@ class _SeatPageState extends State<SeatPage> {
           Align(
             alignment: Alignment.topCenter,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (selectedCol != null && selectedRow != null) {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) {
+                      return CupertinoAlertDialog(
+                        title: Text('예매 하시겠습니까?'),
+                        content: Text('좌석 $selectedRow-$selectedCol'),
+                        actions: [
+                          CupertinoDialogAction(
+                            isDestructiveAction: true,
+                            child: Text('취소'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          CupertinoDialogAction(
+                            isDefaultAction: true,
+                            child: Text('확인'),
+                            onPressed: () {
+                              Navigator.pop(context); // 다이얼로그 닫기
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
                 backgroundColor: Colors.purple,
@@ -143,7 +173,7 @@ class _SeatPageState extends State<SeatPage> {
       children: [
         seat(rowNum, 'A'),
         seat(rowNum, 'B'),
-        SizedBox(width: 54, height: 58),
+        labelBox(rowNum.toString()),
         seat(rowNum, 'C'),
         seat(rowNum, 'D'),
       ],

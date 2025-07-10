@@ -69,31 +69,42 @@ class _SeatPageState extends State<SeatPage> {
               Text('선택안됨'),
             ],
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: ListView(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      labelBox('A', alignment: Alignment.bottomCenter),
-                      labelBox('B', alignment: Alignment.bottomCenter),
-                      SizedBox(width: 54, height: 58),
-                      labelBox('C', alignment: Alignment.bottomCenter),
-                      labelBox('D', alignment: Alignment.bottomCenter),
-                    ],
-                  ),
-                  for (int i = 1; i <= 20; i++) seatRow(i),
-                ],
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 280,
+            child: ListView(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    labelBox('A', alignment: Alignment.bottomCenter),
+                    labelBox('B', alignment: Alignment.bottomCenter),
+                    SizedBox(width: 54, height: 58),
+                    labelBox('C', alignment: Alignment.bottomCenter),
+                    labelBox('D', alignment: Alignment.bottomCenter),
+                  ],
+                ),
+                for (int i = 1; i <= 20; i++) seatRow(i),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.purple,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                minimumSize: Size(MediaQuery.of(context).size.width - 50, 58),
               ),
+
+              child: Text('예매하기', style: TextStyle(fontSize: 18)),
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: ElevatedButton(
-        onPressed: () {},
-        child: Text('data'),
       ),
     );
   }

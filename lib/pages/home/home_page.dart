@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/seat/seat_page.dart';
 import 'package:flutter_train_app/pages/station_list/station_list_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +51,16 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (departure != null && arrival != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => SeatPage(departure, arrival),
+                    ),
+                  );
+                }
+              },
               child: Text(
                 '좌석 선택',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

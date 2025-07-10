@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SeatPage extends StatefulWidget {
-  const SeatPage({super.key});
+  SeatPage(this.departure, this.arrival, {super.key});
+
+  String? departure;
+  String? arrival;
 
   @override
   State<SeatPage> createState() => _SeatPageState();
@@ -17,28 +20,39 @@ class _SeatPageState extends State<SeatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('좌석 선택'),
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios)),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
       ),
       body: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                '수서',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.purple,
+              Expanded(
+                child: Text(
+                  widget.departure!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.purple,
+                  ),
                 ),
               ),
               Icon(Icons.arrow_circle_right_outlined, size: 30),
-              Text(
-                '부산',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.purple,
+              Expanded(
+                child: Text(
+                  widget.arrival!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.purple,
+                  ),
                 ),
               ),
             ],

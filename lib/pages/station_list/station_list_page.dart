@@ -27,7 +27,12 @@ class _StationListPageState extends State<StationListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('출발역'),
-        leading: IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: () {}),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Column(
         children: [for (String station in stations) seatList(station)],
@@ -40,17 +45,18 @@ class _StationListPageState extends State<StationListPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: SizedBox(
-              height: 50,
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  text,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
+          onTap: () {
+            Navigator.pop(context, text);
+          },
+          child: Container(
+            height: 50,
+            width: double.infinity,
+            color: Colors.transparent,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ),

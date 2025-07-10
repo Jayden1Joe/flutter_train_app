@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/station_list/station_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,6 +9,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? departure;
+  String? arrival;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,34 +32,18 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '출발역',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text('선택', style: TextStyle(fontSize: 40)),
-                    ],
+                  selectStation(
+                    context,
+                    '출발역',
+                    departure ?? '',
+                    (val) => setState(() => departure = val),
                   ),
                   Container(width: 2, height: 50, color: Colors.grey),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '출발역',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text('선택', style: TextStyle(fontSize: 40)),
-                    ],
+                  selectStation(
+                    context,
+                    '도착역',
+                    arrival ?? '',
+                    (val) => setState(() => arrival = val),
                   ),
                 ],
               ),
@@ -78,6 +66,42 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  GestureDetector selectStation(
+    BuildContext context,
+    String title,
+    String station,
+    void Function(String) onSelected,
+  ) {
+    return GestureDetector(
+      onTap: () async {
+        final selected = await Navigator.push<String>(
+          context,
+          MaterialPageRoute(builder: (_) => StationListPage()),
+        );
+        if (selected != null) {
+          onSelected(selected);
+        }
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            station.isEmpty ? '선택' : station,
+            style: TextStyle(fontSize: 40),
+          ),
+        ],
       ),
     );
   }

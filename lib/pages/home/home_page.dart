@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
       onTap: () async {
         final selected = await Navigator.push<String>(
           context,
-          MaterialPageRoute(builder: (_) => StationListPage()),
+          MaterialPageRoute(builder: (_) => StationListPage(title)),
         );
         if (selected != null) {
           onSelected(selected);

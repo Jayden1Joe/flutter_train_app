@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class StationListPage extends StatefulWidget {
-  const StationListPage({super.key});
+  StationListPage(this.title, {super.key});
+
+  String title;
 
   @override
   State<StationListPage> createState() => _StationListPageState();
@@ -26,7 +28,7 @@ class _StationListPageState extends State<StationListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('출발역'),
+        title: Text(widget.title),
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
           onPressed: () {
@@ -49,6 +51,7 @@ class _StationListPageState extends State<StationListPage> {
             Navigator.pop(context, text);
           },
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
             height: 50,
             width: double.infinity,
             color: Colors.transparent,

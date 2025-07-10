@@ -10,8 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? departure;
-  String? arrival;
+  String departure = '';
+  String arrival = '';
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +36,14 @@ class _HomePageState extends State<HomePage> {
                   selectStation(
                     context,
                     '출발역',
-                    departure ?? '',
+                    departure,
                     (val) => setState(() => departure = val),
                   ),
                   Container(width: 2, height: 50, color: Colors.grey),
                   selectStation(
                     context,
                     '도착역',
-                    arrival ?? '',
+                    arrival,
                     (val) => setState(() => arrival = val),
                   ),
                 ],
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                if (departure != null && arrival != null) {
+                if (departure.isNotEmpty && arrival.isNotEmpty) {
                   Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class SeatPage extends StatefulWidget {
   SeatPage(this.departure, this.arrival, {super.key});
 
-  String? departure;
-  String? arrival;
+  String departure;
+  String arrival;
 
   @override
   State<SeatPage> createState() => _SeatPageState();
@@ -34,7 +34,7 @@ class _SeatPageState extends State<SeatPage> {
             children: [
               Expanded(
                 child: Text(
-                  widget.departure!,
+                  widget.departure,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -46,7 +46,7 @@ class _SeatPageState extends State<SeatPage> {
               Icon(Icons.arrow_circle_right_outlined, size: 30),
               Expanded(
                 child: Text(
-                  widget.arrival!,
+                  widget.arrival,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,

@@ -70,7 +70,10 @@ class _SeatPageState extends State<SeatPage> {
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height - 280,
+            height:
+                MediaQuery.of(context).size.height -
+                MediaQuery.of(context).padding.bottom -
+                250,
             child: ListView(
               padding: EdgeInsets.symmetric(vertical: 20),
               children: [

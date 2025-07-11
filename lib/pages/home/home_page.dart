@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
                     '출발역',
                     departure,
                     (val) => setState(() => departure = val),
+                    excludeStation: arrival,
                   ),
                   Container(width: 2, height: 50, color: Colors.grey),
                   selectStation(
@@ -47,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                     '도착역',
                     arrival,
                     (val) => setState(() => arrival = val),
+                    excludeStation: departure,
                   ),
                 ],
               ),

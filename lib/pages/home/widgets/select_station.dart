@@ -5,13 +5,17 @@ GestureDetector selectStation(
   BuildContext context,
   String title,
   String station,
-  void Function(String) onSelected,
-) {
+  void Function(String) onSelected, {
+  String? excludeStation,
+}) {
   return GestureDetector(
     onTap: () async {
       final selected = await Navigator.push<String>(
         context,
-        MaterialPageRoute(builder: (_) => StationListPage(title)),
+        MaterialPageRoute(
+          builder: (_) =>
+              StationListPage(title, excludeStation: excludeStation),
+        ),
       );
       if (selected != null) {
         onSelected(selected);

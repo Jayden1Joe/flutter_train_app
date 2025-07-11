@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/seat/widgets/label_box.dart';
+
+Widget seat({
+  required int rowNum,
+  required String col,
+  required int? selectedRow,
+  required String? selectedCol,
+  required void Function(int row, String col) onSelected,
+}) {
+  return col != ''
+      ? Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+          child: GestureDetector(
+            onTap: () {
+              onSelected(rowNum, col);
+            },
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                color: selectedCol == col && selectedRow == rowNum
+                    ? Colors.purple
+                    : Colors.grey[300],
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+        )
+      : labelBox(rowNum.toString());
+}

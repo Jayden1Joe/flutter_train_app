@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/seat/widgets/label_box.dart';
+import 'package:flutter_train_app/pages/seat/widgets/reserve.dart';
+import 'package:flutter_train_app/pages/seat/widgets/seat.dart';
 
 class SeatPage extends StatefulWidget {
   SeatPage(this.departure, this.arrival, {super.key});
@@ -108,61 +110,9 @@ class _SeatPageState extends State<SeatPage> {
           ),
           Align(
             alignment: Alignment.topCenter,
-            child: ElevatedButton(
-              onPressed: () {
-                if (selectedCol != null && selectedRow != null) {
-                  showCupertinoDialog(
-                    context: context,
-                    builder: (context) {
-                      return CupertinoAlertDialog(
-                        title: Text('예매 하시겠습니까?'),
-                        content: Text('좌석 $selectedRow-$selectedCol'),
-                        actions: [
-                          CupertinoDialogAction(
-                            isDestructiveAction: true,
-                            child: Text('취소'),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          CupertinoDialogAction(
-                            isDefaultAction: true,
-                            child: Text('확인'),
-                            onPressed: () {
-                              Navigator.pop(context); // 다이얼로그 닫기
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.purple,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                minimumSize: Size(MediaQuery.of(context).size.width - 50, 58),
-              ),
-
-              child: Text('예매하기', style: TextStyle(fontSize: 18)),
-            ),
+            child: reserve(selectedCol: selectedCol, selectedRow: selectedRow),
           ),
         ],
-      ),
-    );
-  }
-
-  SizedBox labelBox(String text, {Alignment alignment = Alignment.center}) {
-    return SizedBox(
-      width: 54,
-      height: 58,
-      child: Align(
-        alignment: alignment,
-        child: Text(text, style: TextStyle(fontSize: 18)),
       ),
     );
   }
@@ -171,37 +121,56 @@ class _SeatPageState extends State<SeatPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        seat(rowNum, 'A'),
-        seat(rowNum, 'B'),
+        seat(
+          rowNum: rowNum,
+          col: 'A',
+          selectedRow: selectedRow,
+          selectedCol: selectedCol,
+          onSelected: (row, col) {
+            setState(() {
+              selectedRow = row;
+              selectedCol = col;
+            });
+          },
+        ),
+        seat(
+          rowNum: rowNum,
+          col: 'B',
+          selectedRow: selectedRow,
+          selectedCol: selectedCol,
+          onSelected: (row, col) {
+            setState(() {
+              selectedRow = row;
+              selectedCol = col;
+            });
+          },
+        ),
         labelBox(rowNum.toString()),
-        seat(rowNum, 'C'),
-        seat(rowNum, 'D'),
+        seat(
+          rowNum: rowNum,
+          col: 'C',
+          selectedRow: selectedRow,
+          selectedCol: selectedCol,
+          onSelected: (row, col) {
+            setState(() {
+              selectedRow = row;
+              selectedCol = col;
+            });
+          },
+        ),
+        seat(
+          rowNum: rowNum,
+          col: 'D',
+          selectedRow: selectedRow,
+          selectedCol: selectedCol,
+          onSelected: (row, col) {
+            setState(() {
+              selectedRow = row;
+              selectedCol = col;
+            });
+          },
+        ),
       ],
     );
-  }
-
-  Widget seat(int rowNum, String col) {
-    return col != ''
-        ? Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
-            child: GestureDetector(
-              onTap: () {
-                selectedCol = col;
-                selectedRow = rowNum;
-                setState(() {});
-              },
-              child: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: selectedCol == col && selectedRow == rowNum
-                      ? Colors.purple
-                      : Colors.grey[300],
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-            ),
-          )
-        : labelBox(rowNum.toString());
   }
 }

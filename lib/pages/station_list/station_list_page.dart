@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/pages/station_list/widgets/seat_list.dart';
 
 class StationListPage extends StatefulWidget {
   StationListPage(this.title, {super.key});
@@ -37,35 +38,8 @@ class _StationListPageState extends State<StationListPage> {
         ),
       ),
       body: Column(
-        children: [for (String station in stations) seatList(station)],
+        children: [for (String station in stations) seatList(context, station)],
       ),
-    );
-  }
-
-  Column seatList(String text) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.pop(context, text);
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            height: 50,
-            width: double.infinity,
-            color: Colors.transparent,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                text,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ),
-        Divider(color: Colors.grey[300]),
-      ],
     );
   }
 }

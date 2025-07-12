@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/home/widgets/select_seat.dart';
 import 'package:flutter_train_app/pages/home/widgets/select_station.dart';
@@ -12,6 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String departure = '';
   String arrival = '';
+  String sw = '';
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,15 @@ class _HomePageState extends State<HomePage> {
                     (val) => setState(() => departure = val),
                     excludeStation: arrival, //도착역과 같은 역의 경우 제외
                   ),
-                  Container(width: 2, height: 50, color: Colors.grey),
+                  IconButton(
+                    onPressed: () {
+                      sw = departure;
+                      departure = arrival;
+                      arrival = sw;
+                      setState(() {});
+                    },
+                    icon: Icon(Icons.sync_alt),
+                  ),
                   selectStation(
                     context,
                     '도착역',

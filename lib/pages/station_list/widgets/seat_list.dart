@@ -12,7 +12,7 @@ Column seatList(BuildContext context, String text) {
           padding: EdgeInsets.symmetric(horizontal: 20),
           height: 50,
           width: double.infinity,
-          color: Colors.transparent,
+          color: Theme.of(context).focusColor,
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(

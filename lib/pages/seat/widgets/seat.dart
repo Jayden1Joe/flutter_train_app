@@ -7,6 +7,7 @@ Widget seat({
   required int? selectedRow,
   required String? selectedCol,
   required void Function(int row, String col) onSelected,
+  required BuildContext context,
 }) {
   return col != ''
       ? Padding(
@@ -21,7 +22,7 @@ Widget seat({
               decoration: BoxDecoration(
                 color: selectedCol == col && selectedRow == rowNum
                     ? Colors.purple
-                    : Colors.grey[300],
+                    : Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(8),
               ),
             ),

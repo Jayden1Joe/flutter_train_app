@@ -43,6 +43,7 @@ class _StationListPageState extends State<StationListPage> {
       body: Column(
         children: [for (String station in stations) seatList(context, station)],
       ),
+      backgroundColor: Theme.of(context).focusColor,
     );
   }
 }

@@ -78,7 +78,7 @@ class _SeatPageState extends State<SeatPage> {
                 width: 24,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: Colors.grey[300],
+                  color: Theme.of(context).cardColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
@@ -132,6 +132,7 @@ class _SeatPageState extends State<SeatPage> {
               selectedCol = col;
             });
           },
+          context: context,
         ),
         seat(
           rowNum: rowNum,
@@ -144,6 +145,7 @@ class _SeatPageState extends State<SeatPage> {
               selectedCol = col;
             });
           },
+          context: context,
         ),
         labelBox(rowNum.toString()),
         seat(
@@ -157,6 +159,7 @@ class _SeatPageState extends State<SeatPage> {
               selectedCol = col;
             });
           },
+          context: context,
         ),
         seat(
           rowNum: rowNum,
@@ -169,6 +172,7 @@ class _SeatPageState extends State<SeatPage> {
               selectedCol = col;
             });
           },
+          context: context,
         ),
       ],
     );

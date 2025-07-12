@@ -43,6 +43,23 @@ class reserve extends StatelessWidget {
               );
             },
           );
+        } else {
+          showCupertinoDialog(
+            context: context,
+            builder: (context) {
+              return CupertinoAlertDialog(
+                title: Text('좌석을 선택해주세요'),
+                actions: [
+                  CupertinoDialogAction(
+                    child: Text('확인'),
+                    onPressed: () {
+                      Navigator.pop(context); // pop을 두번 실행해서 초기 홈페이지로 돌아감.
+                    },
+                  ),
+                ],
+              );
+            },
+          );
         }
       },
       style: ElevatedButton.styleFrom(

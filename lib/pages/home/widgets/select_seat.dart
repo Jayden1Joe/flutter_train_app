@@ -14,7 +14,9 @@ class SelectSeat extends StatelessWidget {
         if (departure.isNotEmpty && arrival.isNotEmpty) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (_) => SeatPage(departure, arrival)),
+            MaterialPageRoute(
+              builder: (_) => SeatPage(departure, arrival),
+            ), //도착역과 출발역의 정보를 가지고 좌석 예매 페이지로 전환
           );
         }
       },

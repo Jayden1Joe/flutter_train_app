@@ -16,6 +16,7 @@ class reserve extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         if (selectedCol != null && selectedRow != null) {
+          //좌석이 제대로 선택되었을때만 실행
           showCupertinoDialog(
             context: context,
             builder: (context) {
@@ -34,8 +35,8 @@ class reserve extends StatelessWidget {
                     isDefaultAction: true,
                     child: Text('확인'),
                     onPressed: () {
-                      Navigator.pop(context); // 다이얼로그 닫기
                       Navigator.pop(context);
+                      Navigator.pop(context); // pop을 두번 실행해서 초기 홈페이지로 돌아감.
                     },
                   ),
                 ],

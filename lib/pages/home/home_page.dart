@@ -38,21 +38,25 @@ class _HomePageState extends State<HomePage> {
                     '출발역',
                     departure,
                     (val) => setState(() => departure = val),
-                    excludeStation: arrival,
+                    excludeStation: arrival, //도착역과 같은 역의 경우 제외
                   ),
                   Container(width: 2, height: 50, color: Colors.grey),
                   selectStation(
                     context,
                     '도착역',
                     arrival,
-                    (val) => setState(() => arrival = val),
-                    excludeStation: departure,
+                    (val) =>
+                        setState(() => arrival = val), //함수를 넘겨줘서 여기서 실행으로 바꿈.
+                    excludeStation: departure, //출발역과 같은 역의 경우 제외
                   ),
                 ],
               ),
             ),
             SizedBox(height: 20),
-            SelectSeat(departure, arrival),
+            SelectSeat(
+              departure,
+              arrival,
+            ), //출발역, 도착역이 모두 갖춰지면, 그 정보를 기반으로 좌석 선택 페이지로 넘겨줌.
           ],
         ),
       ),

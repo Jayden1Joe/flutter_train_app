@@ -29,7 +29,9 @@ class _StationListPageState extends State<StationListPage> {
     ];
     final stations = widget.excludeStation == null
         ? allStations
-        : allStations.where((s) => s != widget.excludeStation).toList();
+        : allStations
+              .where((s) => s != widget.excludeStation)
+              .toList(); //제외할 아이템이 있을시, 제외한 리스트를 반환.
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -41,7 +43,9 @@ class _StationListPageState extends State<StationListPage> {
         ),
       ),
       body: Column(
-        children: [for (String station in stations) seatList(context, station)],
+        children: [
+          for (String station in stations) seatList(context, station),
+        ], //역 리스트의 아이템을 반복해서 리스트를 표시
       ),
       backgroundColor: Theme.of(context).focusColor,
     );

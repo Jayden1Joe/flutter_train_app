@@ -32,6 +32,7 @@ class _SeatPageState extends State<SeatPage> {
       ),
       body: Column(
         children: [
+          //출발역, 도착역 표시
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -60,6 +61,7 @@ class _SeatPageState extends State<SeatPage> {
               ),
             ],
           ),
+          //선택됨, 선택안됨 색깔 안내
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -94,6 +96,7 @@ class _SeatPageState extends State<SeatPage> {
             child: ListView(
               padding: EdgeInsets.symmetric(vertical: 20),
               children: [
+                //A-D열 표시 제목행
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -104,19 +107,24 @@ class _SeatPageState extends State<SeatPage> {
                     labelBox('D', alignment: Alignment.bottomCenter),
                   ],
                 ),
+                //1-20행 반복
                 for (int i = 1; i <= 20; i++) seatRow(i),
               ],
             ),
           ),
           Align(
             alignment: Alignment.topCenter,
-            child: reserve(selectedCol: selectedCol, selectedRow: selectedRow),
+            child: reserve(
+              selectedCol: selectedCol,
+              selectedRow: selectedRow,
+            ), //선택된 열과 행 값을 가지고 예약 확인 박스를 띄움.
           ),
         ],
       ),
     );
   }
 
+  //좌석 행 생성 위젯
   Row seatRow(int rowNum) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -127,6 +135,7 @@ class _SeatPageState extends State<SeatPage> {
           selectedRow: selectedRow,
           selectedCol: selectedCol,
           onSelected: (row, col) {
+            //선택시, 선택된 행 열을 부모 위젯에게 전달.
             setState(() {
               selectedRow = row;
               selectedCol = col;

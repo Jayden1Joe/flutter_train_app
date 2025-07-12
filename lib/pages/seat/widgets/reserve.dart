@@ -53,7 +53,7 @@ class reserve extends StatelessWidget {
                   CupertinoDialogAction(
                     child: Text('확인'),
                     onPressed: () {
-                      Navigator.pop(context); // pop을 두번 실행해서 초기 홈페이지로 돌아감.
+                      Navigator.pop(context);
                     },
                   ),
                 ],

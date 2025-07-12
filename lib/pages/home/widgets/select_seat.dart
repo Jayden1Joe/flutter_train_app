@@ -37,7 +37,7 @@ class SelectSeat extends StatelessWidget {
                   CupertinoDialogAction(
                     child: Text('확인'),
                     onPressed: () {
-                      Navigator.pop(context); // pop을 두번 실행해서 초기 홈페이지로 돌아감.
+                      Navigator.pop(context);
                     },
                   ),
                 ],
@@ -46,15 +46,15 @@ class SelectSeat extends StatelessWidget {
           );
         }
       },
-      child: Text(
-        '좌석 선택',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-      ),
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
         backgroundColor: Colors.purple,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         minimumSize: Size(double.infinity, 58),
+      ),
+      child: Text(
+        '좌석 선택',
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }

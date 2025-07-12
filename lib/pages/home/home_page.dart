@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/pages/home/widgets/select_seat.dart';
 import 'package:flutter_train_app/pages/home/widgets/select_station.dart';
-import 'package:flutter_train_app/pages/seat/seat_page.dart';
-import 'package:flutter_train_app/pages/station_list/station_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
